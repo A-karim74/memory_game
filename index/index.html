@@ -7,73 +7,77 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <header >
+  <header>
     <h1>Memory Game Fruix</h1>
     <div class="data_container">
       <p data-attemps-count="0">Nombre de tentatives :</p>
       <p data-pairs-found="0 / 8 ">Nombre de paires trouvées :</p>
-
     </div>
-
   </header>
   <body>
     <main>
-      <div id="instruction" >
+      <div id="instruction">
         <div class="inner_container_img">
-          <img src="./image/desktop/redapple.png" alt="redapple1" id="redapple1">
-
+          <img
+            src="./image/desktop/redapple.png"
+            alt="redapple1"
+            id="redapple1"
+          />
         </div>
-        
+
         <p>
           Instruction : <br />
           trouvez une paire de carte identique pour poursuivre et finir la
           partie . chaque partie est chronometrer .
         </p>
         <div class="inner_container_img">
-          <img src="./image/desktop/redapple.png" alt="redapple2" id="redapple2">
-
+          <img
+            src="./image/desktop/redapple.png"
+            alt="redapple2"
+            id="redapple2"
+          />
         </div>
-      
-
-       
-       
       </div>
 
-      <button  id="start_game" >Commencez votre partie</button>
-       <div id="btn-container">
-        
-      </div>  
+      <div class="player_name_container">
+        <input
+          type="text"
+          name="player_input"
+          placeholder="Entre votre nom de joueur "
+        />
+        <span id="span_error_name"></span>
+      </div>
 
-      
-      
+      <button id="start_game">Commencez votre partie</button>
+      <div id="btn-container"></div>
+
       <!-- <div class="game_container"></div> -->
       <ul id="board_game_container" class="hidden"></ul>
-      
+
       <div id="gs">
         <figure>
           <img src="./image/desktop/couronne.png" alt="" />
           <figcaption>Tableau des scores</figcaption>
         </figure>
-        <p data-score="&#9733; &#9733; &#9733;&#9733; &#9734;" >Score</p>
+        <p data-score="&#9733; &#9733; &#9733;&#9733; &#9734;">Score</p>
 
-        <button id="new_game">Cliquer ici pour commencer une nouvelle partie 
+        <button id="new_game">
+          Cliquer ici pour commencer une nouvelle partie
         </button>
-        <!-- <span id="span_counts"></span> -->
-        <!-- <span id=""span_attemps></span> -->
+        <!-- <span id="span_counts"></span> --> -->
+        <!-- <span id="span_attemps"></span> -->
         <!-- <div id="rank1" class="rank"></div> -->
         <!-- <div id="rank2" class="rank"></div>
         <div id="rank3" class="rank"></div>
         <div id="rank4" class="rank"></div>
-        <div id="rank5" class="rank"></div> -->
+        <div id="rank5" class="rank"></div>
       </div>
     </main>
     <footer>
-      <div id="timer_area" >
+      <div id="timer_area">
         <p data-timer=" 00.00"></p>
-        
       </div>
     </footer>
-     <script  src="./script.js"></script> 
+    <script src="./script.js"></script>
   </body>
-  </html>
-  
+</html>
