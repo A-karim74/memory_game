@@ -20,9 +20,13 @@ if($_POST){
     // on stock le resultat dans un tableau 
 
     $name_already_exist = $req -> fetchAll(PDO::FETCH_ASSOC);
-    print_r($req);
+    /* on verrife si entré  existe déja dans la base ou pas 
+     si $name_already_existe = 1  alors l'entré / le nom de joueur existe déja 
+     sinon si  $name_already_existe = 0 l'entré / le nom de joueur est disponible  */ 
+    
+    print_r($name_already_exist);
 
-    //  $_SESSION ['erreur'] = "Ce nom de joueur éxiste déja" ;
+     // $_SESSION ['erreur'] = "Ce nom de joueur éxiste déja" ;
 
 
      
@@ -32,7 +36,7 @@ if($_POST){
     
     // on clean les data envoyé
 
-   /* $player_name = strip_tags($_POST['player_input']);
+    $player_name = strip_tags($_POST['player_input']);
     print_r($player_name);
 
     // on insert les données dans la DB 
@@ -46,11 +50,14 @@ if($_POST){
     $query ->execute();
 
 
-  
-*/
+    
+    require_once('close.php');
     $_SESSION['message'] = " nom de joueur ajouté ";
 
-    require_once('close.php');
+    
+
+
+
    
   }else{
     $_SESSION ['erreur'] = "Le nom de joueur doit être remplis ,valide et inexistant . ";
@@ -97,12 +104,13 @@ if($_POST){
           <h1> Pour enregistré vos score entré un nom de joueur et cliquer sur envoyer. <br/>
             Sinon cilquer sur commencer une partie
           </h1>
-          <?php
-          if(!empty($_SESSION ['erreur'])){
+          
+         <?php
+        if(!empty($_SESSION ['erreur'])){
             echo '<div class ="alert-alert-danger">' . $_SESSION['erreur'] . '</div>';
             $_SESSION['erreur'] ="";
           }
-          ?>
+                   ?>
 
 <?php 
           if(!empty($_SESSION ['message'])){
@@ -110,7 +118,9 @@ if($_POST){
             $_SESSION['message'] ="";
             
           }
-          ?>
+          ?> 
+
+          
 
 <form method = "POST">
   
@@ -118,11 +128,14 @@ if($_POST){
   <input type ="text" name="player_input" placeholder="Entre votre nom de joueur ">
   <?php
   if(isset($_POST ['player_input']) && !empty($_POST ['player_input'])){
-    if(!($name_already_exist['name_player']  === $player_name )){
-      echo "pseudo déja utlisé ";
+    //if(!($name_already_exist['name_player']  === $player_name )){
+    if($name_already_exist  === 0){
+       echo  ' <div class = "alert-succes" >' . $_SESSION['message'] . '</div>';
+       $_SESSION['message'] ="";
       
-    }else{
-      echo " ce nom de joueur est disponible ";
+    }elseif ($name_already_exist === 1){
+      echo '<div class ="alert-alert-danger">' . $_SESSION['erreur'] . '</div>';
+      $_SESSION['erreur'] ="";
     }
   }
 
